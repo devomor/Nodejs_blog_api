@@ -41,3 +41,27 @@ exports.updateUser = async (req, res, next) => {
     });
   }
 };
+
+exports.userDelete = async (req, res, next) => { 
+    const userId = req.params.userId;
+  try {
+       const user = await User.findById(userId);
+       if (!user) {
+         return res.status(400).json({
+           massage: "wrong user!",
+         });
+       }
+
+    const deleteUser = await User.findByIdAndDelete(userId);
+      res.status(200).json({
+        massage: "user delete successfully",
+        deleteUser,
+      });
+    
+  } catch (error) {
+     res.status(401).json({
+       massage: "user not delete",
+       error: error.message,
+     });
+  }
+}
