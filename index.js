@@ -4,6 +4,7 @@ const connectDB = require('./config/connectDB');
 const dotenv = require("dotenv");
 const authRoute = require('./routes/auth/auth_route');
 const userRoute = require('./routes/user/user_route');
+const postRoute = require('./routes/post/post_route');
 dotenv.config();
 const PORT = process.env.PORT;
 app.use(express.json());
@@ -11,6 +12,8 @@ app.use(express.json());
 app.use('/api/auth', authRoute);
 //user route
 app.use('/api/users', userRoute);
+//post route
+app.use('/api/posts', postRoute);
 app.listen(PORT, () => {
 	console.log(`server is running at ${PORT}`);
 	connectDB();
