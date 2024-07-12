@@ -4,6 +4,6 @@ const { authMiddleware } = require("../../middlewares/auth_middleware");
 const postRoute = require("express").Router();
 postRoute.post("/create",authMiddleware,createPost);
 postRoute.get("/get-all-post",authMiddleware,getAllPost);
-postRoute.put("/:userId",authMiddleware,updatePost);
-postRoute.delete("/:userId",authMiddleware,deletePost);
+postRoute.put("/:postId", authMiddleware, updatePost);
+postRoute.delete("/:postId", authMiddleware, deletePost);
 module.exports = postRoute;
