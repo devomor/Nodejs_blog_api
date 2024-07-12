@@ -3,12 +3,14 @@ const app = express();
 const connectDB = require('./config/connectDB');
 const dotenv = require("dotenv");
 const authRoute = require('./routes/auth/auth_route');
+const userRoute = require('./routes/user/user_route');
 dotenv.config();
 const PORT = process.env.PORT;
 app.use(express.json());
-//route
+//auth route
 app.use('/api/auth', authRoute);
-
+//user route
+app.use('/api/users', userRoute);
 app.listen(PORT, () => {
 	console.log(`server is running at ${PORT}`);
 	connectDB();
